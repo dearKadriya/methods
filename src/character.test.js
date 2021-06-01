@@ -66,6 +66,12 @@ test('Проверка, что уровень не повысится когда
   expect(() => { result.levelUp(); }).toThrowError('Нельзя повысить левел умершего');
 });
 
+test('Проверка, что уровень не повысится когда здоровье меньше нуля', () => {
+  const result = new Zombie('тест');
+  result.health = -10;
+  expect(() => { result.levelUp(); }).toThrowError('Нельзя повысить левел умершего');
+});
+
 test('Проверка, что урон будет нанесен', () => {
   const result = new Zombie('тест');
   result.damage(10);
